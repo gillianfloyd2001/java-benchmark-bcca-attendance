@@ -15,7 +15,7 @@ public class App {
         System.out.println("Hello, Welcome to BCCA");
         ArrayList<AttendenceForm> attendences = loadAttendence();
 
-        AttendenceForm attendence = takeAttendence();
+        takeAttendence();
 
         saveAttendence(attendences);
     }
@@ -32,6 +32,7 @@ public class App {
     }
 
     public static AttendenceForm takeAttendence() {
+
         System.out.print("Name: ");
         String studentName = in.nextLine();
         System.out.print("date (day of week /mm/dd): ");
@@ -48,7 +49,7 @@ public class App {
             ArrayList<AttendenceForm> attedences = (ArrayList<AttendenceForm>) objInput.readObject();
             objInput.close();
             return attedences;
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException | ClassCastException ex) {
             return new ArrayList<AttendenceForm>();
         }
     }
